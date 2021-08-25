@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: #00cec9;
+    }
+
+    .content {
+        font-size: 24px;
+        font-weight: 600;
+        height: 50%;
+    }
+
+    .speed {
+        margin-bottom: 30px;
+    }
+
+    #speed {
+        padding: 10px;
+        outline: none;
+        border: none;
+    }
+</style>
+
+<body>
+    <main class="container">
+        <div class="content">
+            <!-- <span>We Love Programmin</span> -->
+        </div>
+        <div class="speed">
+            <label for="speed">Speed:</label>
+            <input type="number" name="speed" id="speed" value="1" min="1" max="10" step="1">
+        </div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    let str = 'We Love Programmin'
+    let id = 1
+    let speed = 300
+
+    write()
+
+    function write() {
+        $('.content').html(str.slice(0, id))
+        id++
+        if (id >= str.length) {
+            id = 1
+        }
+        setTimeout(write, speed)
+    }
+    $('#speed').on('propertychange input', function () {
+        speed = 300 / ($(this).val())
+    })
+
+    // $('#speed').on('propertychange input', function () {
+    //     speed = speed / ($(this).val())
+    // })
+    // query(arr, speed)
+
+    // function query(num, delay) {
+    //     let promise = Promise.resolve()
+    //     num.map(value => {
+    //         const span = $(`<span>${value}</span>`)
+    //         promise = promise.then(_ => {
+    //             return new Promise(resolve => {
+    //                 setTimeout(() => {
+    //                     $('.content').append(span)
+    //                     resolve()
+    //                 }, delay);
+    //             })
+    //         })
+    //     })
+    // }
+</script>
+
+</html>

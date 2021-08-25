@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: #f6e58d;
+    }
+
+    .title {
+        color: #fff;
+        margin: 20px 0;
+    }
+
+    .inp {
+        padding: 20px;
+        font-size: 20px;
+        width: 500px;
+    }
+
+    .tip {
+        margin: 10px 0;
+        height: 50px;
+        width: 100px;
+        border-radius: 10px;
+        background-color: #e67e22;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+    }
+
+    .tags {
+        display: flex;
+        width: 800px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 0 10px;
+    }
+
+    .hight {
+        background-color: #1abc9c;
+    }
+</style>
+
+<body>
+    <main class="container">
+        <div class="title">Enter all of the choices divided by a comma (',').Press enter when you're done</div>
+        <input type="text" placeholder="Enter choices here..." class="inp">
+        <div class="tags"></div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $('.inp').on("input propertychange", function () {
+
+        let val = $('.inp').val()
+        const tags = val.split(',').filter(value => value.trim() !== '')
+
+        $('.tags').html('')
+
+        tags.forEach(value => {
+            let tip = $(`<span class="tip">${value}</span>`)
+            $('.tags').append(tip)
+        })
+    })
+
+
+    $('.inp').keyup(function (event) {
+        if (event.key == 'Enter') {
+            $('.inp').val('')
+            let len = $('.tip').length
+            let random = Math.floor(Math.random() * len)
+            $('.tip').eq(random).addClass('hight')
+        }
+    })
+</script>
+
+</html>

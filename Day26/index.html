@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+    }
+
+    button {
+        position: fixed;
+        display: inline-block;
+        padding: 12px;
+        border: none;
+        color: #ccc;
+        border-radius: 5px;
+        transition: 0.2s;
+        font-size: 18px;
+    }
+
+    .next {
+        left: 30%;
+        top: 50%;
+        transform: translateX(-100%);
+    }
+
+    .prev {
+        left: 30%;
+        top: 50%;
+        transform: translateY(-100%);
+    }
+
+    .prev:active {
+        transform: translateY(-100%) scale(0.95);
+
+    }
+
+    .next:active {
+        transform: translateX(-100%) scale(0.95);
+    }
+
+    button:hover {
+        color: #000;
+    }
+
+    .content-one {
+        height: 400vh;
+        width: 30vw;
+        transition: 0.5s;
+    }
+
+    .content-two {
+        height: 400vh;
+        width: 70vw;
+        transition: 0.5s;
+    }
+
+    .content-one>div {
+        transition: 0.5s;
+        height: 100vh;
+    }
+
+    .content-one>div:nth-child(4) {
+        background: #FFB866;
+    }
+
+    .content-one>div:nth-child(3) {
+        background: #252E33;
+    }
+
+    .content-one>div:nth-child(2) {
+        background-color: #2A86BA;
+    }
+
+    .content-one>div:nth-child(1) {
+        background-color: #FD3555;
+    }
+
+    .slider-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .slider-left>div:nth-child(1) {
+        color: #fff;
+        font-size: 36px;
+    }
+
+    .slider-left>div:nth-child(2) {
+        color: #fff;
+        font-size: 18px;
+    }
+
+    .content-two>div {
+        height: 100vh;
+        transition: 0.5s;
+    }
+
+    .content-two>div:nth-child(1) {
+        background: url('./1.jfif') 0 0 no-repeat;
+        background-size: cover;
+    }
+
+    .content-two>div:nth-child(2) {
+        background: url('./2.jfif') 0 0 no-repeat;
+        background-size: cover;
+    }
+
+    .content-two>div:nth-child(3) {
+        background: url('./3.jfif') 0 0 no-repeat;
+        background-size: cover;
+    }
+
+    .content-two>div:nth-child(4) {
+        background: url('./4.jfif') 0 0 no-repeat;
+        background-size: cover;
+    }
+</style>
+
+<body>
+    <main class="container">
+        <div class="content-one" style="transform: translateY(-300vh);">
+            <!-- <div class="content-one"> -->
+            <div class="slider-left">
+                <div>Nature flower</div>
+                <div>all in pink</div>
+            </div>
+            <div class="slider-left">
+                <div>Bluuue Sky</div>
+                <div>with it's mountains</div>
+            </div>
+            <div class="slider-left">
+                <div>Lonely castle</div>
+                <div>in the wilderness</div>
+            </div>
+            <div class="slider-left">
+                <div>Flying eagle</div>
+                <div>in the sunset</div>
+            </div>
+        </div>
+        <div class="content-two">
+            <div class="slider-right"></div>
+            <div class="slider-right"></div>
+            <div class="slider-right"></div>
+            <div class="slider-right"></div>
+        </div>
+        <button class="prev"><i class="fa fa-arrow-up"></i></button>
+        <button class="next"><i class="fa fa-arrow-down"></i></button>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    let currentIndexOne = -300
+    let currentIndexTwo = 0
+    $('.prev').click(function () {
+        currentIndexOne += 100
+        currentIndexTwo += 100
+        console.log(currentIndexOne, currentIndexTwo);
+        if (currentIndexTwo >= 400) {
+            currentIndexTwo = 0
+        }
+        if (currentIndexOne >= 100) {
+            currentIndexOne = -300
+        }
+        $('.content-one').css('transform', `translateY(${currentIndexOne}vh)`)
+        $('.content-two').css('transform', `translateY(-${currentIndexTwo}vh)`)
+
+    })
+    $('.next').click(function () {
+        currentIndexOne -= 100
+        currentIndexTwo -= 100
+        if (currentIndexOne < -300) {
+            currentIndexOne = 0
+        }
+        if (currentIndexTwo < 0) {
+            currentIndexTwo = 300
+        }
+        console.log(currentIndexOne, currentIndexTwo);
+        $('.content-one').css('transform', `translateY(${currentIndexOne}vh)`)
+        $('.content-two').css('transform', `translateY(-${currentIndexTwo}vh)`)
+    })
+</script>
+
+</html>

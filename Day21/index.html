@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #81ecec;
+    }
+
+    .empty {
+        width: 150px;
+        height: 150px;
+        border: solid 2px #000;
+        margin-left: 50px;
+    }
+
+    .bgimg {
+        background: url('https://source.unsplash.com/random/200x200');
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .hover {
+        background-color: #333;
+        border-color: white;
+        border-style: dashed;
+        border-width: 3px;
+    }
+
+    .bgimg-opacity {
+        opacity: 0;
+    }
+
+    /* dotted */
+</style>
+
+<body>
+    <main class="container">
+        <div class="empty">
+            <div class="bgimg" draggable="true"></div>
+        </div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $('.bgimg').on('dragstart', function () {
+        $('.bgimg').css('filter', 'brightness(0.3)')
+    })
+    $('.bgimg').on('dragend', function () {
+        $('.bgimg').css('filter', 'brightness(1)')
+    })
+    $('.empty').each((index, value) => {
+        $(value).on('dragover', function () {
+            $(this).append($('.bgimg'))
+            $(this).addClass('hover')
+
+        })
+        $(value).on('dragenter', function () {
+            $(this).addClass('hover')
+        })
+        $(value).on('dragleave', function () {
+            $(this).removeClass('hover')
+
+        })
+        // $(value).on('drop', function () {})
+    })
+</script>
+
+</html>

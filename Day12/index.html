@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #ccc;
+    }
+
+    .title {
+        margin: 20px;
+    }
+
+    .question {
+        height: 80px;
+        width: 600px;
+        border: solid 2px #000;
+        margin: 10px 0;
+        /* padding: 30px; */
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        position: relative;
+        box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.445);
+        overflow: hidden;
+        transition: 1s;
+    }
+    .question-title{
+        margin-left: 15px;
+        transition: 1s;
+    }
+    .question-answer{
+        margin-left: 15px;
+        display: none;
+    }
+    .down {
+        position: absolute;
+        top: 20;
+        right: 20px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .active{
+        height: 150px;
+        background-color: #fff;
+    }
+    .togele{
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.192);
+        border-radius: 50%;
+        padding: 10px;
+        font-size: 20px;
+        right: 15px;
+    }
+</style>
+
+<body>
+    <main class="container">
+        <h1 class="title">Frequently Asked Questions</h1>
+        <div class="question">
+            <div class="question-title">Why shouldn't we trust atoms?</div>
+            <div class="question-answer show">They make up everything</div>
+            <i class="down fa fa-angle-down"></i>
+        </div>
+        <div class="question">
+            <div class="question-title"> What do you call someone with no body and no nose?</div>
+            <div class="question-answer show"> Nobody knows.</div>
+            <i class="down fa fa-angle-down"></i>
+        </div>
+        <div class="question">
+            <div class="question-title">What's the object-oriented way to become wealthy?</div>
+            <div class="question-answer show"> Inheritance.</div>
+            <i class="down fa fa-angle-down"></i>
+        </div>
+        <div class="question">
+            <div class="question-title">How many tickles does it take to tickle an octopus?</div>
+            <div class="question-answer show">Ten-tickles!</div>
+            <i class="down fa fa-angle-down"></i>
+        </div>
+        <div class="question">
+            <div class="question-title"> What is: 1 + 1?</div>
+            <div class="question-answer show">Depends on who are you asking.</div>
+            <i class="down fa fa-angle-down"></i>
+        </div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $('.down').click(function(){
+        if($(this).hasClass('fa-angle-down')){
+            $(this).removeClass('fa-angle-down').addClass('fa-times togele')
+        }else{
+            $(this).removeClass('fa-times').addClass('fa-angle-down').removeClass('togele')
+        }
+        $(this).parent().toggleClass('active')
+        $(this).prev().stop().fadeToggle(1000)
+    })
+</script>
+</html>

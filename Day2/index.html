@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        background-color: #ecf0f1;
+    }
+
+    .container {
+        position: absolute;
+        width: 400px;
+        height: 30px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .container::before {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 300px;
+        background-color: #ccc;
+        z-index: -2;
+    }
+
+    button {
+        position: absolute;
+        top: 60%;
+        background-color: #3498db;
+        border-radius: 5px;
+        border: none;
+        padding: 10px 25px;
+        cursor: pointer;
+    }
+
+    .prev {
+        left: 650px;
+    }
+
+    .next {
+        right: 650px;
+    }
+
+    .num {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 2px #ccc;
+        background-color: #fff;
+    }
+
+    .progress {
+        position: absolute;
+        height: 2px;
+        background-color: #3498db;
+        width: 1px;
+        transition: 0.2s;
+        transition-timing-function: cubic-bezier(.25,.1,0,1);
+        left: 0;
+        transform: translateX(60px);
+        overflow: hidden;
+        z-index: -1;
+    }
+
+    .active {
+        border: solid 2px #3498db;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="progress"></div>
+        <div class="num active">1</div>
+        <div class="num">2</div>
+        <div class="num">3</div>
+        <div class="num">4</div>
+        <div class="num">5</div>
+    </div>
+    <button class="prev">prev</button>
+    <button class="next">next</button>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    let currentIndex = 0;
+    let width = 70
+    $('.prev').click(function () {
+        if (currentIndex > 0) {
+            $('.num').eq(currentIndex).removeClass('active');
+        }
+        currentIndex--
+        if (currentIndex < 0) {
+            currentIndex = 0
+        }
+        $('.progress').css('width','-=70px')
+    })
+    $('.next').click(function () {
+        currentIndex++
+        if (currentIndex >= 5) {
+            currentIndex = 4
+        }
+        $('.num').eq(currentIndex).addClass('active');
+        $('.progress').css('width',`${width*currentIndex}px`)
+    })
+</script>
+
+</html>

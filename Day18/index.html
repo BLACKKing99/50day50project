@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background-slider</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .total {
+        width: 400vw;
+        height: 100vh;
+        display: flex;
+    }
+
+    .img {
+        width: 100vw;
+        height: 100vh;
+        transition: 1s;
+        /* filter: brightness(0.30); */
+    }
+
+    .img:nth-of-type(1) {
+        background: url('./img/1.jpg');
+    }
+
+    .img:nth-of-type(2) {
+        background: url('./img/2.jpg');
+    }
+
+    .img:nth-of-type(3) {
+        background: url('./img/3.jpg');
+    }
+
+    .img:nth-of-type(4) {
+        background: url('./img/4.jpg');
+    }
+
+    button {
+        position: fixed;
+        padding: 10px 20px;
+        background-color: transparent;
+        top: 50%;
+        color: #fff;
+        border: solid 2px #f1c40f;
+        cursor: pointer;
+        transform: translateY(-50%);
+        z-index: 2;
+    }
+
+    .prev {
+        left: 20%;
+    }
+
+    .next {
+        left: 80%;
+    }
+
+    .canner{
+        opacity: 0.3;
+        position: absolute;
+        width: 75vw;
+        height: 75vh;
+        top: 15vh;
+        left: 15vw;
+        background-color: #000;
+        z-index: 1;
+        filter: brightness(0);
+    }
+</style>
+
+<body>
+    <main class="container">
+        <div class="total">
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+            <div class="img"></div>
+        </div>
+        <div class="canner"></div>
+        <button class="prev">上一张</button>
+        <button class="next">下一张</button>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    let currentIndex = 0
+    $('.next').on('click', function () {
+        currentIndex += 100
+        if (currentIndex >= 300) {
+            currentIndex = 300
+        }
+        console.log(currentIndex);
+        $('.img').css('transform', `translateX(-${currentIndex}vw)`)
+    })
+
+    $('.prev').on('click', function () {
+        console.log(currentIndex);
+        currentIndex = currentIndex - 100
+        if (currentIndex <= 0) {
+            currentIndex = 0
+        }
+        console.log(currentIndex);
+        $('.img').css('transform', `translateX(-${currentIndex}vw)`)
+    })
+</script>
+
+</html>

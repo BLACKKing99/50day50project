@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    main {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    main div {
+        transition: 2s;
+        border-radius: 20%;
+        height: 500px;
+        width: 100px;
+        cursor: pointer;
+    }
+
+    .become-big {
+        width: 960px;
+        border-radius: 10%;
+    }
+</style>
+
+<body>
+    <main>
+        <div class="img1  become-big" style="background: url(../img/1.jpg) no-repeat;"></div>
+        <div class="img2" style="background: url(./img/2.jpg) no-repeat;"></div>
+        <div class="img3" style="background: url(./img/5.jpg) no-repeat;"></div>
+        <div class="img4" style="background: url(./img/4.jpg) no-repeat;"></div>
+        <div class="img4" style="background: url(./img/6.jpg) no-repeat;"></div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    // $('.img1').click(() => {
+    //     if (($('.become-big'))) {
+    //         $('.img1').addClass('become-big')
+    //     }
+    //     $('.img2').removeClass('become-big')
+    //     $('.img3').removeClass('become-big')
+    //     $('.img4').removeClass('become-big')
+    // })
+    // $('.img2').click(() => {
+    //     if (($('.become-big'))) {
+    //         $('.img2').addClass('become-big')
+    //     }
+    //     $('.img1').removeClass('become-big')
+    //     $('.img3').removeClass('become-big')
+    //     $('.img4').removeClass('become-big')
+    // })
+    // $('.img3').click(() => {
+    //     if (($('.become-big'))) {
+    //         $('.img3').addClass('become-big')
+    //     }
+    //     $('.img1').removeClass('become-big')
+    //     $('.img2').removeClass('become-big')
+    //     $('.img4').removeClass('become-big')
+    // })
+    // $('.img4').click(() => {
+    //     if (($('.become-big'))) {
+    //         $('.img4').addClass('become-big')
+    //     }
+    //     $('.img1').removeClass('become-big')
+    //     $('.img2').removeClass('become-big')
+    //     $('.img3').removeClass('become-big')
+    // })
+
+    $('div').click(function () {
+        $(this).addClass('become-big').siblings().removeClass('become-big')
+    })
+</script>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #4bcffa;
+    }
+
+    button {
+        padding: 20px 30px;
+        border: none;
+        background-color: rgba(34, 253, 169, 0.5);
+    }
+
+    button:active {
+        transform: scale(0.98);
+    }
+</style>
+
+<body>
+    <audio id="applause" src="sounds/applause.mp3"></audio>
+    <audio id="boo" src="sounds/boo.mp3"></audio>
+    <audio id="gasp" src="sounds/gasp.mp3"></audio>
+    <audio id="tada" src="sounds/tada.mp3"></audio>
+    <audio id="victory" src="sounds/victory.mp3"></audio>
+    <audio id="wrong" src="sounds/wrong.mp3"></audio>
+    <main class="container">
+        <button class="applause">applause</button>
+        <button class="boo">boo</button>
+        <button class="gasp">gasp</button>
+        <button class="tada">tada</button>
+        <button class="victory">victory</button>
+        <button class="wrong">wrong</button>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    const sounds = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong']
+    $('button').each((index, value) => {
+        let res = value.innerHTML
+        $(value).click(function () {
+            stopSongs()
+            document.getElementById(res).play()
+        })
+    })
+    function stopSongs() {
+        sounds.forEach(sound => {
+            const song = document.getElementById(sound)
+            song.pause()
+            song.currentTime = 0;
+        })
+    }
+</script>
+
+</html>

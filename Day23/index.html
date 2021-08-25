@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #81ecec;
+        position: relative;
+    }
+
+    .trangle-one {
+        width: 0px;
+        height: 0px;
+        border: 100px solid #000;
+        border-top-color: #fff;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        position: absolute;
+        transform: rotate(-90deg);
+        transition: 1s;
+        animation: rotate-one 2s linear infinite;
+    }
+
+    .trangle-two {
+        width: 0px;
+        height: 0px;
+        border: 100px solid #000;
+        border-top-color: #fff;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        transform: rotate(-180deg);
+        transition: 1s;
+        animation: rotate-two 2s 0.5s linear infinite;
+    }
+
+    @keyframes rotate-one {
+
+        0%,
+        25% {
+            transform: rotate(-90deg);
+        }
+
+        50%,
+        75% {
+            transform: rotate(90deg);
+        }
+
+        100% {
+            transform: rotate(270deg);
+        }
+    }
+
+    @keyframes rotate-two {
+
+        0%,
+        25% {
+            transform: rotate(-180deg);
+        }
+
+        50%,
+        75% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(180deg);
+        }
+    }
+</style>
+
+<body>
+    <main class="container">
+        <div class="trangle-one"></div>
+        <div class="trangle-two"></div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    // let one = 90
+    // let two = 0
+    // setInterval(() => {
+    //     two += 180
+    //     $('.trangle-one').css({
+    //         transform: `rotate(${one}deg)`,
+    //     })
+    //     $('.trangle-two').css({
+    //         transform: `rotate(${two}deg)`,
+    //     })
+    //     one += 180
+    // }, 1000)
+</script>
+
+</html>

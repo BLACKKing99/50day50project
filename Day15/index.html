@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #74b9ff;
+    }
+
+    .container>div:nth-child(2) {
+        margin: 0 200px;
+    }
+
+    .twitter,
+    .play,
+    .square {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .fa-twitter,
+    .fa-youtube-play,
+    .fa-facebook-square {
+        color: #fff;
+        font-size: 100px;
+    }
+
+    .number {
+        color: #fff;
+        font-size: 100px;
+    }
+
+    .title {
+        color: #fff;
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <main class="container">
+        <div class="twitter">
+            <i class="fa fa-twitter"></i>
+            <div class="number"></div>
+            <div class="title">Twitter Followers</div>
+        </div>
+        <div class="play">
+            <i class="fa fa-youtube-play"></i>
+            <div class="number">5000</div>
+            <div class="title">YouTube Subscribers</div>
+        </div>
+        <div class="square">
+            <i class="fa fa-facebook-square"></i>
+            <div class="number">7500</div>
+            <div class="title">Facebook Fans</div>
+        </div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    // const timer = setInterval(function(){
+    //     currentNumber++
+    //     if(currentNumber>=12000){
+
+    //     }
+    // },10)
+    let currentNumber1 = 0
+    let currentNumber2 = 0
+    let currentNumber3 = 0
+    const timer = setInterval(() => {
+        currentNumber1 = currentNumber1 + 120
+        currentNumber2 = currentNumber2 + 50
+        currentNumber3 = currentNumber3 + 75
+        $('.number').eq(0).html(currentNumber1)
+        $('.number').eq(1).html(currentNumber2)
+        $('.number').eq(2).html(currentNumber3)
+        if (currentNumber1 >= 12000 && currentNumber2 >= 5000 && currentNumber3 >= 7500) {
+            clearInterval(timer)
+        }
+    }, 10);
+</script>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        background-color: #ffeaa7;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .title {
+        width: 400px;
+        margin: 0 auto;
+        font-size: 25px;
+    }
+
+    .content {
+        height: 200px;
+        width: 400px;
+        background-color: #0984e3;
+        margin: 15px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: 700;
+        color: #fff;
+        transition: 0.5s;
+        box-shadow: 5px 5px 10px #aaa;
+    }
+
+    .content:nth-of-type(4) {
+        transform: translateX(2000px);
+    }
+
+    .content:nth-of-type(5) {
+        transform: translateX(-2000px);
+    }
+
+    .content:nth-of-type(6) {
+        transform: translateX(2000px);
+    }
+
+    .content:nth-of-type(7) {
+        transform: translateX(-2000px);
+    }
+
+    .content:nth-of-type(8) {
+        transform: translateX(2000px);
+    }
+
+    .content:nth-of-type(9) {
+        transform: translateX(-2000px);
+    }
+
+    .show {
+        transform: translateX(0px);
+    }
+</style>
+
+<body>
+    <main class="container">
+        <h1 class="title">Scroll to see the animation</h1>
+        <div class="content">Content</div>
+        <div class="content">Content</div>
+        <div class="content">Content</div>
+        <div class="content">Content</div>
+        <div class="content">Content</div>
+        <div class="content">Content</div>
+        <div class="content">Content</div>
+        <div class="content">Content</div>
+        <div class="content">Content</div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    // $('body').click(function(){
+    //     console.log($('html').scrollTop());
+    // })
+    // if($('html').scrollTop() >= 400){
+    //     $('.content').eq(3).css('transform','translateX(0px)')
+    // }
+    // event.currentTarget.scrollY
+    $(window).scroll(function (event) {
+        if(event.currentTarget.scrollY>=100){
+            $('.content').eq(3).css('transform','translateX(0px)')
+        }else{
+            $('.content').eq(3).css('transform','translateX(2000px)')
+        }
+        if(event.currentTarget.scrollY>=300){
+            $('.content').eq(4).css('transform','translateX(0px)')
+        }else{
+            $('.content').eq(4).css('transform','translateX(-2000px)')
+        }
+        if(event.currentTarget.scrollY>=550){
+            $('.content').eq(5).css('transform','translateX(0px)')
+        }else{
+            $('.content').eq(5).css('transform','translateX(2000px)')
+        }
+        if(event.currentTarget.scrollY>=750){
+            $('.content').eq(6).css('transform','translateX(0px)')
+        }else{
+            $('.content').eq(6).css('transform','translateX(-2000px)')
+        }
+        if(event.currentTarget.scrollY>=1000){
+            $('.content').eq(7).css('transform','translateX(0px)')
+        }else{
+            $('.content').eq(7).css('transform','translateX(2000px)')
+        }
+        if(event.currentTarget.scrollY>=1250){
+            $('.content').eq(8).css('transform','translateX(0px)')
+        }else{
+            $('.content').eq(8).css('transform','translateX(-2000px)')
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #4bcffa;
+    }
+
+    .key {
+        height: 80px;
+        width: 300px;
+        border: solid 2px #fff;
+        background-color: #34e7e4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 17px;
+        position: relative;
+    }
+
+    .press-key {
+        height: 80px;
+        width: 200px;
+        border: solid 2px #fff;
+        background-color: #34e7e4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 17px;
+        position: relative;
+        margin-left: 20px;
+    }
+
+    .name {
+        position: absolute;
+        top: -30px;
+    }
+</style>
+
+<body>
+    <main class="container">
+        <div class="key">
+            <div class="name">
+                event.keyCode
+            </div>
+            Press any key to get the keyCode
+        </div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $(document).keydown(function (event) {
+        $('.container').children().remove()
+        let event_keyCode = event.originalEvent.keyCode
+        let event_key = event.originalEvent.key
+        let event_code = event.originalEvent.code
+        const keyCode = $(`<div class="press-key">
+            <div class="name">event.keyCode</div>
+            ${event_keyCode}
+        </div>`)
+        const key = $(`<div class="press-key">
+            <div class="name">event.key</div>
+            ${event_key === ' ' ? 'Space' : event_key}
+        </div>`)
+        const code = $(`<div class="press-key">
+            <div class="name">event.code</div>
+            ${event_code}
+        </div>`)
+        $('.container').append(key)
+        $('.container').append(keyCode)
+        $('.container').append(code)
+    })
+</script>
+
+</html>

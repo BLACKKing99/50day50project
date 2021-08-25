@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    main {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        overflow: hidden;
+    }
+
+    .left,
+    .right {
+        width: 50%;
+        height: 100%;
+        position: relative;
+    }
+
+    .left {
+        background: url('https://50projects50days.com/projects/split-landing-page/ps.jpg') 0 0;
+        background-size: cover;
+        transition: 1s;
+    }
+
+    .right {
+        background: url('https://50projects50days.com/projects/split-landing-page/xbox.jpg') 0 0;
+        background-size: cover;
+        transition: 1s;
+    }
+
+    .left-p,.right-p{
+        position: absolute;
+        left: 50%;
+        top: 35%;
+        transform: translateX(-50%);
+        font-size: 40px;
+        color: #fff;
+        transition: 1s;
+    }
+
+    .left-a,.right-a{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: solid 3px #fff;
+        padding: 15px 50px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #fff;
+        transition: 1s;
+    }
+
+
+    .left-a:hover {
+        background-color: rgba(7, 238, 255, 0.5);
+    }
+
+    .right-a:hover {
+        background-color: rgba(7, 255, 131, 0.5);
+    }
+
+    .left:hover,.right:hover{
+        width: 80%;
+        transform: scale(1.5);
+    }
+
+
+    .left:hover .left-a,.right:hover .right-a{
+        transform: scale(1) translate(-50%, -50%);
+    }
+
+    .left:hover .left-p,.right:hover .right-p{
+        transform: scale(1) translateX(-50%);
+    }
+</style>
+
+<body>
+    <main class="container">
+        <div class="left">
+            <p class="left-p">Playstation 5</p>
+            <a href="javascript:;" class="left-a">BUY NOW</a>
+        </div>
+        <div class="right">
+            <p class="right-p">XBox Series X</p>
+            <a href="javascript:;" class="right-a">BUY NOW</a>
+        </div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+</script>
+
+</html>

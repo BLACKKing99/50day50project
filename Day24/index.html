@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .content {
+        width: 350px;
+        height: 400px;
+        border-radius: 10px;
+        box-shadow: 3px 3px 30px #eee;
+    }
+
+    .bgimg {
+        border-radius: 10px 10px 0 0;
+        height: 50%;
+        width: 100%;
+        background: url('./1.jfif') 0 0;
+        background-size: cover;
+        margin-bottom: 40px;
+    }
+
+    .title {
+        width: 80%;
+        margin: 0 10%;
+        font-weight: 600;
+    }
+
+    .desc {
+        margin: 2% 10%;
+        width: 80%;
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    .user {
+        margin: 8% 10% 0 10%;
+        display: flex;
+        width: 100%;
+    }
+
+    .user-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .user-name {
+        font-weight: 600;
+    }
+
+    .user-time {
+        font-size: 14px;
+        color: #ccc;
+    }
+</style>
+
+<body>
+    <main class="container">
+        <div class="content">
+            <div class="bgimg"></div>
+            <div class="title">Lorem ipsum dolor sit amet</div>
+            <div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore perferendis</div>
+            <div class="user">
+                <img src="./2.jpg" alt="" class="user-img">
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-time"></div>
+                </div>
+            </div>
+            <!-- <div class="bgimg"></div>
+            <div class="title"></div>
+            <div class="desc"></div>
+            <div class="user">
+                <img src="./2.jpg" alt="" class="user-img">
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-time"></div>
+                </div>
+            </div> -->
+        </div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    Date.prototype.format = function (format) {
+        /*
+         * eg:format="yyyy-MM-dd hh:mm:ss";
+         */
+        var o = {
+            "M+": this.getMonth() + 1, // month
+            "d+": this.getDate(), // day
+            "h+": this.getHours(), // hour
+            "m+": this.getMinutes(), // minute
+            "s+": this.getSeconds(), // second
+            "q+": Math.floor((this.getMonth() + 3) / 3), // quarter
+            "S": this.getMilliseconds()
+            // millisecond
+        }
+        if (/(y+)/.test(format)) {
+            format = format.replace(RegExp.$1, (this.getFullYear() + "")
+                .substr(4 - RegExp.$1.length));
+        }
+        for (var k in o) {
+            if (new RegExp("(" + k + ")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] :
+                    ("00" + o[k]).substr(("" + o[k]).length));
+            }
+        }
+        return format;
+    }
+    $('.user-time').html(new Date().format('yyyy-MM-dd'))
+</script>
+
+</html>

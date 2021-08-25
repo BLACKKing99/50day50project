@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: 0.5s;
+    }
+
+    .btn {
+        background-color: #000;
+        color: #fff;
+        border: none;
+        outline: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    .clock {
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        /* border: solid #000 2px; */
+        position: relative;
+    }
+
+    .hour {
+        position: absolute;
+        left: 50%;
+        /* top: 50%; */
+        height: 50%;
+        width: 3px;
+        transform-origin: bottom center;
+        /* transform: rotate(30deg); */
+        background-color: #000;
+        transition: 0.5s step-start;
+    }
+
+    .min {
+        position: absolute;
+        left: 50%;
+        /* top: 50%; */
+        height: 40%;
+        width: 3px;
+        transform-origin: bottom center;
+        transform: translateY(25%);
+        background-color: #000;
+        transition: 0.5s step-start;
+    }
+
+    .second {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        height: 30%;
+        width: 3px;
+        transform-origin: bottom center;
+        transform: translateY(67%);
+        background-color: rgb(255, 0, 0);
+    }
+
+    /* .clock::after{
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        height: 5px;
+        width: 5px;
+        border: solid 3px rgb(255, 0, 0);
+        border-radius: 50%;
+    } */
+    .time {
+        font-size: 50px;
+        font-weight: 100;
+        margin: 20px 0;
+        transition: 0.5s;
+    }
+
+    .content {
+        color: #ccc;
+        font-size: 12px;
+        transition: 0.5s;
+    }
+
+    .num {
+        display: inline-block;
+        background-color: #000;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 20px;
+        transition: 0.5s;
+    }
+
+    .active-btn {
+        background-color: #fff;
+        color: #000;
+    }
+    .active-container{
+        background-color: #000;
+    }
+    .active{
+        background-color: #fff;
+    }
+    .active-time{
+        color: #fff;
+    }
+</style>
+
+<body>
+    <main class="container">
+        <button class="btn">Dark mode</button>
+        <div class="clock">
+            <div class="hour"></div>
+            <div class="min"></div>
+            <div class="second"></div>
+        </div>
+        <div class="time"></div>
+        <div class="content">SUNDAY, AUG <span class="num">8</span></div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    Date.prototype.format = function (format) {
+        /*
+         * eg:format="YYYY-MM-dd hh:mm:ss";
+         */
+        var o = {
+            "M+": this.getMonth() + 1, // month
+            "d+": this.getDate(), // day
+            "h+": this.getHours(), // hour
+            "m+": this.getMinutes(), // minute
+            "s+": this.getSeconds(), // second
+            "q+": Math.floor((this.getMonth() + 3) / 3), // quarter
+            "S": this.getMilliseconds()
+            // millisecond
+        }
+        if (/(y+)/.test(format)) {
+            format = format.replace(RegExp.$1, (this.getFullYear() + "")
+                .substr(4 - RegExp.$1.length));
+        }
+        for (var k in o) {
+            if (new RegExp("(" + k + ")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] :
+                    ("00" + o[k]).substr(("" + o[k]).length));
+            }
+        }
+        return format;
+    }
+    setInterval(function () {
+        $('.sceond').css('transform','rotate(30deg)')
+        const nowTime = new Date().format('hh:mm:ss')
+        $('.time').html(nowTime + '<span>AM</span>')
+    }, 1000)
+    $('.btn').click(function () {
+        $(this).toggleClass('active-btn')
+        $('.container').toggleClass('active-container')
+        $('.min').toggleClass('active')
+        $('.hour').toggleClass('active')
+        $('.time').toggleClass('active-time')
+        $('.num').toggleClass('active-btn')
+    })
+</script>
+
+</html>

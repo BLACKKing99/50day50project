@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+    }
+
+    .top {
+        height: 50%;
+        background-color: #81ecec;
+    }
+
+    .bottom {
+        height: 50%;
+        background-color: #00cec9;
+    }
+
+    .navbar {
+        position: absolute;
+        height: 80px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        box-shadow: 3px 3px 3px rgba(22, 1, 1, 0.247);
+    }
+
+    .menu {
+        width: 300px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        transition: 1s;
+        background-color: #fff;
+    }
+
+    .menu>span {
+        cursor: pointer;
+        transition: 1s;
+    }
+
+    .back {
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        transition: 1s;
+    }
+
+    .times {
+        color: #74b9ff;
+        font-size: 30px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <main class="container">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="navbar">
+            <div class="menu">
+                <span>Home</span>
+                <span>Works</span>
+                <span>About</span>
+                <span>Contact</span>
+            </div>
+            <div class="back">
+                <i class="times fa fa-times"></i>
+                <!-- <i class="list fa fa-list-ul"></i> -->
+            </div>
+        </div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $('.times').click(function () {
+        if ($(this).hasClass('fa-times')) {
+            // $('.menu').stop().animate({
+            //     width:0
+            // },100)
+            $('.menu').css('width', '0')
+            $('.menu').children().css('transform', 'translateX(200px) rotateY(360deg) perspective(900px)').css(
+                'opacity', '0')
+            $(this).removeClass('fa-times').addClass('fa-list-ul')
+        } else {
+            $('.menu').css('width', '300px')
+            $('.menu').children().css('transform', 'translateX(0px) ').css('opacity', '1')
+            $(this).removeClass('fa-list-ul').addClass('fa-times')
+        }
+    })
+</script>
+
+</html>

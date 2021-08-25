@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+
+    .num {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        width: 300px;
+        height: 500px;
+        background: url('./1.jfif') 0 0;
+        background-size: cover;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .fa {
+        color: #f81900;
+    }
+
+    .heart {
+        position: absolute;
+        animation: scale 0.5s linear;
+    }
+
+    @keyframes scale {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        to {
+            opacity: 0;
+            transform: scale(6);
+        }
+    }
+</style>
+
+<body>
+    <!-- <i class="heart fa fa-heartbeat"></i> -->
+    <main class="container">
+        <div class="title">Double click on the image to <i class="fa fa-heartbeat"></i> it</div>
+        <div class="num">
+            You liked it 0 times
+        </div>
+        <div class="card"></div>
+    </main>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    let index = 0
+    $('.card').click(function (event) {
+        console.log(event);
+        index++
+        $('.num').html(`You liked it ${index} times`)
+        const heart = $('<i class="heart fa fa-heartbeat"></i>').css({
+            top: event.offsetY,
+            left: event.offsetX
+        })
+        $(this).append(heart)
+        setTimeout(() => {
+            heart.remove()
+        }, 400);
+    })
+</script>
+
+</html>
